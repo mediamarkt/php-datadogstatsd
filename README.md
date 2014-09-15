@@ -2,6 +2,8 @@
 
 This is an extremely simple PHP [datadogstatsd](http://www.datadoghq.com/) client
 
+ * Most of this code was stolen from: https://gist.github.com/1065177/5f7debc212724111f9f500733c626416f9f54ee6
+
 ## Installation
 
 Clone repository at [github.com/DataDog/php-datadogstatsd](https://github.com/DataDog/php-datadogstatsd)

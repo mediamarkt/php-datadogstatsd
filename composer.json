@@ -2,5 +2,13 @@
     "name": "DataDog/php-datadogstatsd",
     "type": "library",
     "description": "This is an extremely simple PHP datadogstatsd client",
-    "keywords": ["DataDog", "PHP"]
+    "keywords": ["DataDog", "PHP"],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "DataDog\\": "src/"
+        }
+    }
 }
