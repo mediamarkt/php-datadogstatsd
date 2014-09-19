@@ -9,14 +9,15 @@ Clone repository at [github.com/mediamarkt/php-datadogstatsd](https://github.com
 
 or via composer:
 
-`
+```json
 "repositories": [
-        {
-            "type": "git",
-            "url":  "git@github.com:mediamarkt/php-datadogstatsd.git"
-        }
-    ],
-`
+    {
+        "type": "git",
+        "url":  "git@github.com:mediamarkt/php-datadogstatsd.git"
+    }
+]
+```
+
 ## Usage
 
 To send metric:
@@ -39,6 +40,5 @@ $notifier->metric('multi_client.test.metric', [time(), 155], ['multi_client:test
 With multiple requests better to use socket connection. You can see tests to get time measurements.
 
 ## Author
-
-Aleksei Novitskiy - novitskiy.aleksei@gmail.com
-Alex Corley - anthroprose@gmail.com
+- Aleksei Novitskiy - novitskiy.aleksei@gmail.com
+- Alex Corley - anthroprose@gmail.com
