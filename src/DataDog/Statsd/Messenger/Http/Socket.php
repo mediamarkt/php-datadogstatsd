@@ -24,7 +24,7 @@ class Socket implements MessengerInterface
             return false;
         } else {
 
-            $sendRequest = function() use ($uri, $host, $body, &$resource) {
+            $sendRequest = function() use ($uri, $host, $body, &$resource, $openSocket) {
                 $out = "POST $uri HTTP/1.1\r\n";
                 $out .= "Host: $host\r\n";
                 $out .= "Accept: application/json\r\n";
@@ -33,7 +33,24 @@ class Socket implements MessengerInterface
                 $out .= "Connection: Close\r\n\r\n";
                 $out .= $body . "\r\n\r\n";
 
-                return fwrite($resource, $out);
+                $bytesToWrite = strlen($out);
+                $totalBytesWritten = 0;
+
+                while ($totalBytesWritten < $bytesToWrite) {
+                    try {
+                        $bytes = fwrite($resource, substr($out, $totalBytesWritten));
+                        $totalBytesWritten += $bytes;
+                    } catch (\Exception $e) {
+                        fclose($resource);
+                        $openSocket();
+                    }
+                }
+
+//                while (!feof($resource)) {
+//                    echo fgets($resource, 128);
+//                }
+
+                return true;
             };
 
             if ($sendRequest() == false) {
