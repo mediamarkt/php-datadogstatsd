@@ -35,11 +35,8 @@ class Socket implements MessengerInterface
 
         switch ($type) {
             case 'timing':
-                $p = $point[1] * 100; // milliseconds
-                $result = array($name => "$p|ms");
+                $result = array($name => "$point[1]|ms");
                 break;
-
-            // not sure if written below works, because not used
             case 'gauge':
                 $result = array($name => "$point[1]|g");
                 break;
