@@ -7,7 +7,7 @@ use DataDog\StatsD\Messenger\MessengerInterface;
 class Curl implements MessengerInterface
 {
 
-    public function send($host, $uri, $body)
+    public function send($host, $uri, $body, $port = 80)
     {
         $ch = curl_init();
 

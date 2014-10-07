@@ -14,17 +14,19 @@ use DataDog\StatsD\Messenger\MessengerInterface;
 class Notifier
 {
     public $dataDogHost;
+    public $port;
     private $eventUrl = '/api/v1/events';
     private $apiKey;
     private $applicationKey;
     /** @var MessengerInterface */
     private $messenger;
 
-    public function __construct(MessengerInterface $messenger, $apiKey, $applicationKey, $dataDogHost = 'app.datadoghq.com')
+    public function __construct(MessengerInterface $messenger, $apiKey, $applicationKey, $dataDogHost = 'app.datadoghq.com', $port = 443)
     {
         $this->apiKey = $apiKey;
         $this->applicationKey = $applicationKey;
         $this->dataDogHost = $dataDogHost;
+        $this->port = $port;
         $this->messenger = $messenger;
     }
 

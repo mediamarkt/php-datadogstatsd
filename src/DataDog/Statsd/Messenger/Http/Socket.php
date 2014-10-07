@@ -7,13 +7,13 @@ use DataDog\StatsD\Messenger\MessengerInterface;
 class Socket implements MessengerInterface
 {
 
-    public function send($host, $uri, $body)
+    public function send($host, $uri, $body, $port = 443)
     {
         $resource = null;
         $errNum = $errStr = '';
 
-        $openSocket = function() use ($host, &$resource, &$errNum, &$errStr) {
-            $resource = pfsockopen("ssl://".$host, 443, $errNum, $errStr, 10);
+        $openSocket = function() use ($host, &$resource, &$errNum, &$errStr, $port) {
+            $resource = pfsockopen("ssl://".$host, $port, $errNum, $errStr, 10);
 
             return $resource;
         };
